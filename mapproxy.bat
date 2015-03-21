@@ -4,7 +4,6 @@ IF NOT EXIST env (
   virtualenv --system-site-packages env
   env\Scripts\activate
   pip install pyreadline MapProxy ipython lxml
-  mapproxy-util create -t base-config mapactionproxy
   cd mapactionproxy
   mapproxy-util serve-develop osm.yaml
 ) ELSE (
