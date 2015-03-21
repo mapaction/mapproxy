@@ -3,7 +3,7 @@ IF NOT EXIST env (
   easy_install virtualenv
   virtualenv --system-site-packages env
   env\Scripts\activate
-  pip install pyreadline MapProxy ipython lxml
+  pip install pyreadline MapProxy ipython lxml pillow
   cd mapactionproxy
   mapproxy-util serve-develop osm.yaml
 ) ELSE (
