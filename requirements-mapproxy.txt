@@ -1,6 +1,4 @@
   pyreadline
-  ipython
-  lxml
-  pillow
-  pyproj
-  Shapely
+
+
+ 

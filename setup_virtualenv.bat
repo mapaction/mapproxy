@@ -1,5 +1,5 @@
 
-set pydir=C:\Python27
+set pydir=C:\mapproxy\Python27
 
 IF NOT EXIST env (
     "%pydir%\Scripts\easy_install.exe" virtualenv
