@@ -12,11 +12,12 @@ rem %~dp0\env\Scripts\activate.bat
 
 REM rem 32bit
 REM     "%pydir%\Scripts\pip.exe" install wheels\ipython-3.2.1-py27-none-any.whl
-    "%pydir%\Scripts\pip.exe" install wheels\Pillow-2.9.0-cp27-none-win32.whl
-    "%pydir%\Scripts\pip.exe" install wheels\pyproj-1.9.4-cp27-none-win32.whl
-    "%pydir%\Scripts\pip.exe" install wheels\lxml-3.4.4-cp27-none-win32.whl
-    "%pydir%\Scripts\pip.exe" install wheels\Shapely-1.5.9-cp27-none-win32.whl
-    "%pydir%\Scripts\pip.exe" install -r requirements-mapproxy.txt MapProxy
+    "%pydir%\Scripts\pip.exe" install "%~dp0\wheels\Pillow-2.9.0-cp27-none-win32.whl"
+    "%pydir%\Scripts\pip.exe" install "%~dp0\wheels\pyproj-1.9.4-cp27-none-win32.whl"
+    "%pydir%\Scripts\pip.exe" install "%~dp0\wheels\lxml-3.4.4-cp27-none-win32.whl"
+    "%pydir%\Scripts\pip.exe" install "%~dp0\wheels\PyYAML-3.11-cp27-none-win32.whl"
+    "%pydir%\Scripts\pip.exe" install "%~dp0\wheels\Shapely-1.5.9-cp27-none-win32.whl"
+rem     "%pydir%\Scripts\pip.exe" install -r requirements-mapproxy.txt MapProxy
 
 
 rem (installed Python, VirtualEnv setup)
@@ -28,6 +29,8 @@ rem IF NOT EXIST env (
     REM type env\Scripts\activate.bat.old >> env\Scripts\activate.bat
     REM env\Scripts\activate.bat
 	
+rem http://www.lfd.uci.edu/~gohlke/pythonlibs/3i673h27/PyYAML-3.11-cp27-none-win_amd64.whl
+rem http://www.lfd.uci.edu/~gohlke/pythonlibs/3i673h27/PyYAML-3.11-cp27-none-win32.whl
 
 
 rem "Wheel" install files are available from 
@@ -38,6 +41,7 @@ rem     "%pydir%\Scripts\pip.exe" install wheels\ipython-3.2.1-py27-none-any.whl
 rem     "%pydir%\Scripts\pip.exe" install %~dp0\wheels\Pillow-2.9.0-cp27-none-win_amd64.whl
 rem     "%pydir%\Scripts\pip.exe" install %~dp0\wheels\pyproj-1.9.4-cp27-none-win_amd64.whl
 rem     "%pydir%\Scripts\pip.exe" install %~dp0\wheels\lxml-3.4.4-cp27-none-win_amd64.whl
+rem     "%pydir%\Scripts\pip.exe" install %~dp0\wheels\PyYAML-3.11-cp27-none-win_amd64.whl
 rem     "%pydir%\Scripts\pip.exe" install %~dp0\wheels\Shapely-1.5.9-cp27-none-win_amd64.whl
 rem    "%pydir%\Scripts\easy_install.exe" MapProxy
     "%pydir%\Scripts\easy_install.exe" -H None -f %~dp0\eggs MapProxy
