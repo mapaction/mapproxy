@@ -2,3 +2,5 @@
 env/
 cache_data/
 eggs/
+exe/
+pywin32/
