@@ -1,1 +1,0 @@
-env\Scripts\easy_install.exe -zmaxd eggs MapProxy
