@@ -3,4 +3,6 @@ env/
 cache_data/
 eggs/
 exe/
+iis/logs/
 pywin32/
+*.dll
