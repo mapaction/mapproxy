@@ -36,12 +36,11 @@ def __ExtensionFactory__():
 ##     from paste.script.util.logging_config import fileConfig
 
     #    D:\work\custom-software-group\code\github\mapproxy\config\demo-base-config\mapproxy.yaml
-    # yaml_file = os.path.abspath(os.path.join(os.path.dirname(__file__),
-    #                                         r'..',
-    #                                         r'config',
-    #                                         r'demo-base-config',
-    #                                         r'mapproxy.yaml'))
-    yaml_file = r'D:\work\custom-software-group\code\github\mapproxy\config\demo-base-config\mapproxy.yaml'
+    yaml_file = os.path.abspath(os.path.join(mapproxy_root_dir,
+                                             r'config',
+                                             r'demo-base-config',
+                                             r'mapproxy.yaml'))
+    # yaml_file = r'D:\work\custom-software-group\code\github\mapproxy\config\demo-base-config\mapproxy.yaml'
     
     from mapproxy.wsgiapp import make_wsgi_app
     # application = make_wsgi_app(r'C:\mapproxy\mapproxy.yaml')
