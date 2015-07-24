@@ -14,8 +14,12 @@ rem http://forums.iis.net/t/1189907.aspx?Enable+32+bit+applications+in+IIS
 rem try this
 rem .Opening command prompt and navigating to the directory %systemdrive%\Inetpub\AdminScripts
 rem 2.Type: cscript.exe adsutil.vbs set W3SVC/AppPools/Enable32BitAppOnWin64 true
-%windir%\System32\cscript.exe c:\inetpub\AdminScripts\adsutil.vbs set W3SVC/AppPools/Enable32BitAppOnWin64 true
+%windir%\System32\cscript.exe c:\inetpub\AdminScripts\adsutil.vbs set W3SVC/AppPools/DefaultAppPool/Enable32BitAppOnWin64 true
 
+:: Set the max number of worker processes in the DefaultAppPool
+rem %windir%\System32\cscript.exe c:\inetpub\AdminScripts\adsutil.vbs set cscript adsutil.vbs set w3svc/apppools/defaultapppool/maxprocesses 4
+
+:: Is this too liberal? would permissions on just the `iis` dir be sufficent?
 icacls "%~dp0\.." /grant "NT AUTHORITY\IUSR:(OI)(CI)(RX)"
 icacls "%~dp0\.." /grant "Builtin\IIS_IUSRS:(OI)(CI)(RX)"
 
@@ -26,5 +30,5 @@ icacls "%~dp0\logs" /grant "Builtin\IIS_IUSRS:(OI)(CI)(W)"
 
 :: Create the IIS virtualdir
 %windir%\system32\inetsrv\appcmd.exe stop site /site.name:"Default Web Site"
-"%~dp0\..\env\Scripts\python.exe" "%~dp0\..\iis\test_iis_config.py" install
+"%~dp0\..\env\Scripts\python.exe" "%~dp0\..\iis\iis_deploy.py" install
 %windir%\system32\inetsrv\appcmd.exe start site /site.name:"Default Web Site"
