@@ -4,6 +4,7 @@ set curl="C:\Program Files (x86)\Git\bin\curl.exe"
 :: Make the various dirs for stuff to be downloaded to:
 mkdir %~dp0\installers\wheels
 mkdir %~dp0\installers\eggs
+rem mkdir %~dp0\installers\exe
 
 
 :: Get the Wheel files.
@@ -18,14 +19,16 @@ set url=%url%pyproj-1.9.4-cp27-none-win32,
 set url=%url%lxml-3.4.4-cp27-none-win32,
 set url=%url%PyYAML-3.11-cp27-none-win32,
 set url=%url%Shapely-1.5.9-cp27-none-win32,
-set url=%url%isapi_wsgi-0.4.2-py2-none-any
+set url=%url%isapi_wsgi-0.4.2-py2-none-any,
+set url=%url%pywin32-219-cp27-none-win32
 set url=%url%}.whl
 
 %curl% --user-agent "Mozilla/4.0" --silent --show-error "%url%" --output "#1.whl"
 
 popd
 
+
 :: Get the Egg files.
 :: These can be downloaded using easy_install:
 call setup_virtualenv.cmd
-%~dp0\env\Scripts\easy_install.exe -zmaxd %~dp0\installers\eggs MapProxy
+%~dp0\env\Scripts\easy_install.exe -zmaxd %~dp0\installers\eggs MapProxy virtualenv pip

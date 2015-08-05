@@ -1,10 +1,11 @@
 
 set pydir=C:\Python27
+set virdir=%~dp0\env
 
-IF NOT EXIST "%~dp0\env" (
-    "%pydir%\Scripts\easy_install.exe" virtualenv
-    "%pydir%\Scripts\virtualenv.exe" --system-site-packages "%~dp0\env"
-    move "%~dp0\env\Scripts\activate.bat" "%~dp0\env\Scripts\activate.bat.old"
-    type "%~dp0\bat_header.txt" > "%~dp0env\Scripts\activate.bat"
-    type "%~dp0\env\Scripts\activate.bat.old" >> "%~dp0\env\Scripts\activate.bat"
+IF NOT EXIST "%virdir%\Scripts\python.exe" (
+    "%pydir%\Scripts\easy_install.exe" -H None -f %~dp0\installers\eggs virtualenv
+    "%pydir%\Scripts\virtualenv.exe" --system-site-packages "%virdir%"
+    move "%virdir%\Scripts\activate.bat" "%virdir%\Scripts\activate.bat.old"
+    type "%~dp0\bat_header.txt" > "%virdir%\Scripts\activate.bat"
+    type "%virdir%\Scripts\activate.bat.old" >> "%virdir%\Scripts\activate.bat"
 )
