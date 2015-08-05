@@ -4,5 +4,6 @@ cache_data/
 eggs/
 exe/
 iis/logs/
+ppython27/
 pywin32/
 *.dll

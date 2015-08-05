@@ -1,10 +1,16 @@
 :: Install pyWin32 extensions. This should be installed into the core python
 :: install, not the virtualenv
-C:\Python27\Scripts\pip.exe install "%~dp0\..\installers\wheels\pywin32-219-cp27-none-win32.whl"
-C:\Python27\python.exe C:\Python27\Scripts\pywin32_postinstall.py -install
+rem C:\Python27\Scripts\pip.exe install "%~dp0\..\installers\wheels\pywin32-219-cp27-none-win32.whl"
+rem C:\Python27\python.exe C:\Python27\Scripts\pywin32_postinstall.py -install
+call %~dp0\..\setup_virtualenv.cmd
+::set pydir=%~dp0\ppython27\App
+"%pydir%\Scripts\easy_install.exe" -H None -f %~dp0\..\installers\eggs pip
+"%pydir%\Scripts\pip.exe" install "%~dp0\..\installers\wheels\pywin32-219-cp27-none-win32.whl"
+"%pydir%\python.exe" "%pydir%\Scripts\pywin32_postinstall.py" -install
+rem "%~dp0\ppython27\App\python.exe"
 
 :: Install ISAPI_WSGI, into the virtualenv
-"%~dp0\..\env\Scripts\pip.exe" install "%~dp0\..\installers\wheels\isapi_wsgi-0.4.2-py2-none-any.whl"
+"%virdir%\Scripts\pip.exe" install "%~dp0\..\installers\wheels\isapi_wsgi-0.4.2-py2-none-any.whl"
 
 :: Need to configure IIS DefaultAppPool to allow 32bit apps to run
 rem ref need:
@@ -30,5 +36,5 @@ icacls "%~dp0\logs" /grant "Builtin\IIS_IUSRS:(OI)(CI)(W)"
 
 :: Create the IIS virtualdir
 %windir%\system32\inetsrv\appcmd.exe stop site /site.name:"Default Web Site"
-"%~dp0\..\env\Scripts\python.exe" "%~dp0\..\iis\iis_deploy.py" install
+"%virdir%\Scripts\python.exe" "%~dp0iis_deploy.py" install
 %windir%\system32\inetsrv\appcmd.exe start site /site.name:"Default Web Site"

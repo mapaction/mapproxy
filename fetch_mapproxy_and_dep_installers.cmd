@@ -31,24 +31,4 @@ popd
 :: Get the Egg files.
 :: These can be downloaded using easy_install:
 call setup_virtualenv.cmd
-%~dp0\env\Scripts\easy_install.exe -zmaxd %~dp0\installers\eggs MapProxy
-
-
-:: Get the EXE files.
-rem pushd %~dp0\installers\exe
-
-:: According to various posts on the web (eg http://unix.stackexchange.com/
-:: questions/31821/how-do-i-use-curl-to-download-content-from-sourceforge) it
-:: ought to be possible to download from sourceforge using curl with a nice 
-:: tidy-looking URL like this one:
-:: set url="http://downloads.sourceforge.net/projects/pywin32/files/pywin32/Build%20219/pywin32-219.win32-py2.7.exe/download"
-::
-:: However this doesn't seem to work for me, but this horrific looking URL does:
-:: Also note that the & character have been escaped using ^& (ref http://ss64.com/nt/syntax-esc.html)
-::set url=http://downloads.sourceforge.net/project/pywin32/pywin32/Build^%20219/pywin32-219.win32-py2.7.exe^?^r=http^%3A^%2F^%2Fsourceforge.net^%2Fprojects^%2Fpywin32^%2Ffiles^%2Fpywin32^%2FBuild^%2520219^%2F^&ts^=1437492709^&use_mirror^=netcologne
-
-rem set url=http://sourceforge.net/projects/pywin32/files/pywin32/Build%20219/pywin32-219.win32-py2.7.exe/download
-
-rem %curl% --location --output pywin32-219.win32-py2.7.exe --silent --show-error "%url%"
-
-rem popd
+%~dp0\env\Scripts\easy_install.exe -zmaxd %~dp0\installers\eggs MapProxy virtualenv pip

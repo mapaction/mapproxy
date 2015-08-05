@@ -1,1 +1,1 @@
-robocopy %~dp0 Y:\testing\installers\GIS\mapproxy /xd ppython /xd env /xd cache_data /xd .git /mir
+robocopy %~dp0 Y:\testing\installers\GIS\mapproxy /xd ppython27 /xd env /xd cache_data /xd .git /xf *.pyc /xf _iis_deploy.dll /xf *.log /mir 
