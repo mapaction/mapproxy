@@ -17,7 +17,7 @@ Dependencies
 Other dependancies(eg individual Python libaries) are resolved by the process below.
 
 ### Fetching the install files
-To allow the installation process to occur without internet access all of the required files should be download in advance by using the script ```fetch_mapproxy_and_dep_installers.cmd```.
+To allow the installation process to occur without internet access all of the required files should be download in advance by using the script `fetch_mapproxy_and_dep_installers.cmd`.
 
 If necessary the fetch script can be run on a separate machine and then transfered to the target machine using ```deploy_to_testing.cmd```. The paths in this may need to be adjusted to suit your needs.
 
@@ -29,14 +29,17 @@ Installation
 ### Notes about the installation process
 The install script will create a python virtualenv in the folder `env`.
 
-If there is not a C complier available to `easy_install` it is not able to install Shapely correctly. Therefore Shapely and some other dependencies need to be installed using ```pip```, from wheel files that where downloaded above.
+If there is not a C complier available to `easy_install` it is not able to install Shapely correctly. Therefore Shapely and some other dependencies need to be installed using `pip`, from wheel files that where downloaded above.
 
 MapProxy itself does not seem to install properly using `pip` and must be installed using `easy_install`.
 
+Configuration
+-------------
+Mapproxy will need to be configured with your own selection of services and sources. By default the configuration file used is at `config\mapproxy.yaml`. The default file has a basic, automatically generated demo service as described (here)[http://mapproxy.org/docs/nightly/install.html#create-a-configuration].
 
 Deployment to production web servers
 ------------------------------------
-The eventual aim is to include scripts which will deploy MapProxy to a "proper" webserver, rather than just the included development server.
+The scripts below will deploy MapProxy to a "proper" webserver, rather than just the included development server.
 
 ### IIS
 Integration with IIS is approached using the ISAPI_WSGI wrapper. The relevant files are in the `iis` directory.
